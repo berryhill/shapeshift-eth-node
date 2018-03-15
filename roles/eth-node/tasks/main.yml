@@ -5,8 +5,23 @@
     url: https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64
     mode: 0775
     validate_certs: no
+
 - name: Install epel
   yum:
     name: epel-release
     state: present
     disable_gpg_check: yes
+
+- name: Install Go
+  yum:
+    name: golang
+
+- name: Install gmp-devel
+  yum:
+    name: gmp-devel
+
+- name: Clone geth
+  command: chdir=/root git clone git://github.com/ethereum/go-ethereum.git
+
+- name: Make geth
+  command: chdir=/root/go-ethereum make geth

@@ -8,5 +8,6 @@ services:
     from: centos:7
     roles:
       - eth-node
-    entrypoint: /usr/bin/dumb-init
+    command: ['/usr/bin/dumb-init', '/root/go-ethereum/build/bin/geth', '--rinkeby']
+
 registries: {}
